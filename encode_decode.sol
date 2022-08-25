@@ -20,7 +20,7 @@ contract encode_decode{
   }
 
   function _unsafeEncodeTokenId(int x, int y) internal pure returns (bytes32) {
-    return bytes32(((uint(x) * factor) & clearLow) | (uint(y) & clearHigh));
+    return bytes32(((uint(x)) << 128 & clearLow) | (uint(y) & clearHigh));
   }
 
   function decodeTokenId(uint value) external pure returns (int, int) {
